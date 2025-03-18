@@ -1,0 +1,6 @@
+# CODEOWNERS - Defines who is responsible for reviewing and maintaining different parts of the repository.
+# Owners will be automatically requested for review when changes are made to the specified files or directories.
+# Format: [file or directory] [GitHub username(s) or team(s)]
+
+# Global default owner (applies to all files in the repository)
+* @winstonsec

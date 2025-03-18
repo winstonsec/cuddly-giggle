@@ -1,0 +1,26 @@
+# .github/stale.yml
+# Configuration for GitHub's Stale Action
+# Automatically marks issues & PRs as stale after a period of inactivity
+
+name: "Close stale issues and PRs"
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs once a day (UTC)
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v8
+        with:
+          days-before-stale: 30
+          days-before-close: 7
+          stale-issue-message: "⚠️ This issue has been automatically marked as stale due to inactivity. If no further updates are provided, it will be closed in 7 days."
+          stale-pr-message: "⚠️ This pull request has been marked as stale due to inactivity. If no further updates are made, it will be closed in 7 days."
+          close-issue-message: "❌ This issue has been closed due to inactivity. Please reopen if necessary."
+          close-pr-message: "❌ This pull request has been closed due to inactivity. Please reopen if necessary."
+          stale-issue-label: "stale"
+          exempt-issue-labels: "pinned,security,important"
+          stale-pr-label: "stale"
+          exempt-pr-labels: "work-in-progress,do-not-close"

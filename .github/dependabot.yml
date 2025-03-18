@@ -1,0 +1,93 @@
+# .github/dependabot.yml
+# Dependabot configuration for managing dependencies across multiple directories and subdirectories
+
+version: 2
+updates:
+  # Terraform dependencies (Infrastructure as Code)
+  - package-ecosystem: "terraform"
+    directory: "/iac/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "terraform"
+    reviewers:
+      - "@winstonsec"
+
+  # Backend (Fastify - TypeScript) - Includes all backend subdirectories
+  - package-ecosystem: "npm"
+    directory: "/web/backend/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "backend"
+    reviewers:
+      - "@winstonsec"
+
+  # Frontend (Next.js - TypeScript) - Includes all frontend projects dynamically
+  - package-ecosystem: "npm"
+    directory: "/web/frontend/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "frontend"
+    reviewers:
+      - "@winstonsec"
+    allow:
+      - dependency-type: "direct"
+
+  # Mobile (Flutter - Dart) - Includes all mobile projects dynamically
+  - package-ecosystem: "pub"
+    directory: "/mobile/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "mobile"
+    reviewers:
+      - "@winstonsec"
+    allow:
+      - dependency-name: "flutter"
+        dependency-type: "direct"
+
+  # Catch-all rule for any other NPM-based projects inside frontend (e.g., /web/frontend/sitea, /web/frontend/othersite)
+  - package-ecosystem: "npm"
+    directory: "/web/frontend/*/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "frontend"
+    reviewers:
+      - "@winstonsec"
+
+  # Catch-all rule for any other NPM-based projects inside backend (e.g., /web/backend/api1, /web/backend/api2)
+  - package-ecosystem: "npm"
+    directory: "/web/backend/*/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "backend"
+    reviewers:
+      - "@winstonsec"
+
+  # Catch-all rule for any other Flutter projects inside mobile (e.g., /mobile/app1, /mobile/app2)
+  - package-ecosystem: "pub"
+    directory: "/mobile/*/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "mobile"
+    reviewers:
+      - "@winstonsec"
